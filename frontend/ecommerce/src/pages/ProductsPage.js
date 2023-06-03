@@ -1,30 +1,27 @@
-import { useEffect, useState } from 'react'
-
+import { useEffect, useState,useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../actions/action';
 import ProductDetails from '../component/ProductDetails'
 import EvidenceForm from '../component/EvidenceForm'
 
 const ProductsPage = () => {
-    
-    const [products,setProducts]=useState([])
+ 
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.productReducer.products);
     const [cartProducts,setcartProducts]=useState([])
     useEffect(() => {
-        const fetchApplications=async()=>{
-       const token=JSON.parse(localStorage.getItem('token'))
-            console.log(token)
-            const response = await fetch('/product/getAllProduct',{
-                method:'GET',
-                token:token
-            }
-            )
-            const json = await response.json()
-            if (response.ok) {
-                setProducts([...json])
-            }else{
-                alert('Unsuccessful')
-            }
-        }
-        fetchApplications()
-    },[])
+    dispatch(fetchProducts());
+
+    const interval = setInterval(() => {
+        console.log(products)
+      dispatch(fetchProducts());
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
     
     const addProductsToCart=(product)=>{
         setcartProducts([...cartProducts,product])
