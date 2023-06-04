@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import GhostDetails from '../component/GhostDetails'
-import GhostForm from '../component/GhostForm'
+import ProductForm from '../component/ProductForm'
 import JobContext from '../context/context'
 
 const GhostPage = () => {
@@ -47,7 +47,6 @@ const GhostPage = () => {
         fetchJobs()
     }
     return (
-        <JobContext.Provider value={{arr,setarr}}>
         <div className="home">
             <input type='search' placeholder='Search for job by title'
             onChange={(e)=>setsearch(e.target.value)}
@@ -59,9 +58,8 @@ const GhostPage = () => {
                     <GhostDetails key={job._id} job={job} />
                 ))}
             </div>
-            <GhostForm />
+            <ProductForm />
         </div>
-        </JobContext.Provider>
     )
 }
 
