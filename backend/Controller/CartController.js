@@ -4,8 +4,8 @@ const CartItem =require('../Models/CartItemModel')
 const asyncHandler = require('express-async-handler')
 
 const addToCart = asyncHandler( async (request, response) => {
-    const {id} =request.decoded
-    const { productId, name, image, price } = request.body;
+
+    const { userId, productId, name, image, price } = request.body;
     console.log(userId, productId, name, image, price )
     try {
 

@@ -16,11 +16,8 @@ const DeleteTheProduct = async (e) => {
       const token = JSON.parse(localStorage.getItem('token'));
         // Assuming you have the product ID from the event target
       const response = await fetch(`/product/deleteProduct/`+product._id, {
-      method: 'DELETE',
-      token:token,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+       method: 'DELETE',
+        headers:{'token':token},
     });
   } catch (error) {
     // Handle network or other errors

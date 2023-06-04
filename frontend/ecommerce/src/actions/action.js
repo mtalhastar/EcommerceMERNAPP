@@ -7,7 +7,7 @@ export const fetchProducts = () => {
       const token = JSON.parse(localStorage.getItem('token'));
       const response = await fetch('/product/getAllProduct', {
         method: 'GET',
-        token:token
+         headers:{'token':token},
       });
 
       if (response.ok) {
@@ -36,7 +36,7 @@ export const fetchSellerProducts = () => {
       const token = JSON.parse(localStorage.getItem('token'));
       const response = await fetch('/product/getSellerProduct', {
         method: 'GET',
-        token:token
+        headers:{'token':token},
       });
 
       if (response.ok) {

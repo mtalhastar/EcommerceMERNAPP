@@ -22,10 +22,8 @@ const ProductForm = () => {
         const response = await fetch('/product/addProduct', {
             method: 'POST',
             body: JSON.stringify(product),
-            headers: {
-                'token':token,
-                'Content-Type': 'application/json'
-            }
+            'token':token,
+            
         })
         const json = await response.json()
 
