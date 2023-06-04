@@ -11,11 +11,23 @@ const ProductDetails = ({  product , addProductsToCart }) => {
      addProductsToCart(product._id)
     }
     
-    const DeleteTheProduct=async(e)=>{
-        //deleteProductApi
-    }
-    
-    return (
+const DeleteTheProduct = async (e) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+        // Assuming you have the product ID from the event target
+      const response = await fetch(`/product/deleteProduct/`+product._id, {
+      method: 'DELETE',
+      token:token,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    // Handle network or other errors
+    console.error('Error:', error);
+  }
+};
+   return (
         <div className="buyer-details">
             <p><strong>Product: </strong>{product.name}</p>
             <p><strong>price: </strong>{product.price}</p>

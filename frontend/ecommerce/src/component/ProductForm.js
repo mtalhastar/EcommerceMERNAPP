@@ -1,16 +1,21 @@
 import { useState,useEffect,useContext } from "react"
+import { incrementCount } from '../actions/action'; // Create this action later
+import { useDispatch} from "react-redux";
+
+
 
 const ProductForm = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [image, setImage] = useState('')
     const [totalQuantity, setTotalQuantity] = useState('')
-     const [error, setError] = useState('')
+    const [error, setError] = useState('')
+
+    const dispatch = useDispatch()
     
-
-
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         const token =JSON.parse(localStorage.getItem('token'))
         const product = {name:name, price:price,image:image,totalQuantity:totalQuantity}
       
@@ -22,9 +27,8 @@ const ProductForm = () => {
                 'Content-Type': 'application/json'
             }
         })
-       
         const json = await response.json()
-      
+
         if (!response.ok) {
             setError(json.error)
             alert('Not Authorized as Employee or Admin')
@@ -36,6 +40,7 @@ const ProductForm = () => {
             setImage('')
             setTotalQuantity('')
             setError('')
+            dispatch(incrementCount())
         }
 
     }

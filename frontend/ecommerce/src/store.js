@@ -5,7 +5,8 @@ const initialState = {
   products: [],
   loading: true,
   error: false,
-  searchResults:[]
+  searchResults:[],
+  sellerProducts:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +20,7 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_PRODUCTS_SUCCESS':
@@ -47,15 +49,39 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         searchResults:searchResults,
-      };
+      };  
     default:
       return state;
   }
 };
+
+const SellerProductReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'FETCH_SELLER_PRODUCTS_SUCCESS':
+      console.log(state)
+      return {
+        ...state,
+        sellerProducts: action.payload,
+        loading: false,
+        error: false,
+      };
+    case 'FETCH_SELLER_PRODUCTS_FAILURE':
+      return {
+        ...state,
+        sellerProducts: [],
+        loading: false,
+        error: true,
+      }; 
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   // Add other reducers here if needed
   reducer,
-  productReducer
+  productReducer,
+  SellerProductReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly

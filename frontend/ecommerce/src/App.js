@@ -1,7 +1,7 @@
 import{BrowserRouter,Routes,Route} from 'react-router-dom';
 import Login from './pages/Login'
 import ProductsPage from './pages/ProductsPage'
-import GhostPage from './pages/GhostPage'
+import ProductManage from './pages/ProductManage'
 import GamePage from './pages/GamePage'
 import SignUp from './pages/Signup'
 import NavBar from './component/Navbar'
@@ -34,7 +34,7 @@ function App() {
         <Routes>
            <Route
            path="/GhostPage"
-           element= {<GhostPage/>}
+           element= {<ProductManage/>}
             />
         </Routes>
         <Routes>
