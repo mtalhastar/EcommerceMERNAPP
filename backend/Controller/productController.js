@@ -29,7 +29,7 @@ const getSellerProducts = async (req, res) => {
   const {id}=req.decoded
   const seller=id
   try {
-    const product = await Product.findById({seller:seller});
+    const product = await Product.find({seller:seller});
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }

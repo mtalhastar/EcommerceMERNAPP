@@ -17,9 +17,9 @@ const DeleteTheProduct = async (e) => {
         // Assuming you have the product ID from the event target
       const response = await fetch(`/product/deleteProduct/`+product._id, {
       method: 'DELETE',
-      token:token,
       headers: {
-        'Content-Type': 'application/json',
+         'token':token,
+         'Content-Type': 'application/json',
       },
     });
   } catch (error) {

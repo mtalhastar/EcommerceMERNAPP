@@ -13,7 +13,8 @@ const ProductManage = () => {
     const dispatch = useDispatch()
     useEffect(() => { 
         dispatch(fetchSellerProducts())
-    },[])
+        console.log("products seller",sellerProducts)
+    },[selector])
 
     return (
         <div className="home">
