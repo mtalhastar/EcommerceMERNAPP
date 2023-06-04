@@ -11,13 +11,14 @@ const ProductsPage = () => {
     const search = useSelector((state) => state.productReducer.searchResults);
     const [searchValue,setsearchValue]=useState('')
     const [cartProducts,setcartProducts]=useState([])
-
+    localStorage.setItem('sellerPage',false)
   
     useEffect(() => {
     dispatch(fetchProducts());
     const interval = setInterval(() => {
         console.log(products)
       dispatch(fetchProducts());
+       
     }, 5000);
     return () => {
       clearInterval(interval);

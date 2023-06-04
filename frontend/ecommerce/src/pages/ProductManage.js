@@ -9,11 +9,12 @@ const ProductManage = () => {
     
     const selector =useSelector((state)=>state.reducer)
     const sellerProducts = useSelector((state) => state.SellerProductReducer.sellerProducts);
-   
     const dispatch = useDispatch()
+    localStorage.setItem('sellerPage',true)
     useEffect(() => { 
         dispatch(fetchSellerProducts())
         console.log("products seller",sellerProducts)
+        
     },[selector])
 
     return (

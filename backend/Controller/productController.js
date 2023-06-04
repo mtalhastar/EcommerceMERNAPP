@@ -56,17 +56,30 @@ const createProduct = async (req, res) => {
 // Update a product * Seller  and Admin
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const {name,price,totalQuantity} = req.body;
+ const { name, price, totalQuantity } = req.body;
+  
   try {
-    const product = await Product.findByIdAndUpdate(
-      id,
-      { name, price,totalQuantity},
-      { new: true }
-    );
+    const product = await Product.findById(id);
+    
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
-    res.json(product);
+    
+    // Check if name, price, or totalQuantity are provided and update only the provided values
+    if (name !== undefined && name.trim() !== '') {
+      product.name = name;
+    }
+    
+    if (price !== undefined && price.trim() !== '') {
+      product.price = price;
+    }
+    
+    if (totalQuantity !== undefined && totalQuantity.trim() !== '') {
+      product.totalQuantity = totalQuantity;
+    }
+    
+    const updatedProduct = await product.save();
+    res.json(updatedProduct);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
