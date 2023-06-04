@@ -5,6 +5,7 @@ const initialState = {
   products: [],
   loading: true,
   error: false,
+  searchResults:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +38,15 @@ const productReducer = (state = initialState, action) => {
         products: [],
         loading: false,
         error: true,
+      };
+    case 'SEARCH_PRODUCTS':
+      const searchText = action.payload;
+      const searchResults = state.products.filter((product) =>
+        product.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      return {
+        ...state,
+        searchResults:searchResults,
       };
     default:
       return state;

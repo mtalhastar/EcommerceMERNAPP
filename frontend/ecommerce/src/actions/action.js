@@ -21,3 +21,11 @@ export const fetchProducts = () => {
     }
   };
 };
+
+// searchActions.js
+export const searchProducts = (value) => {
+  return {
+    type: 'SEARCH_PRODUCTS',
+    payload: value,
+  };
+};

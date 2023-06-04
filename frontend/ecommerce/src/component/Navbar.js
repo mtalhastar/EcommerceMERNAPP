@@ -29,7 +29,7 @@ const NavBar =()=>{
  return(
  <header>
         <nav>
-        <div className="nav-header"> <span className="nav-logo">Job Portal</span> </div>
+        <div className="nav-header"> <span className="nav-logo">EcommerceApp</span> </div>
       
         <ul className="nav-links">         
             <li><Link to="/"><span>Login</span></Link></li>
