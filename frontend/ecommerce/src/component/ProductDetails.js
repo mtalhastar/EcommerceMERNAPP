@@ -102,7 +102,7 @@ const EditTheProduct = async (e) => {
      </button>
      
       ) : null}
-      {role === 'admin' || flag === 'true' ? (
+      {flag === 'true' ? (
        <button className="a" onClick={()=>setSingleClick(true)}>Edit</button>
        ) : null}
 
