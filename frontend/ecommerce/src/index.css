@@ -174,7 +174,12 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-
+.Profile label{
+  color: white ;
+}
+.Profile input {
+   border-radius: 8px;
+}
 .nav-header {
   flex: 1;
 }
@@ -192,7 +197,11 @@ justify-content: center;
 align-items: center;
 margin: 40px;
 }
-
+.Adjust{
+  margin-left: 25%;
+  width: 50%;
+  margin-bottom: 20px;
+}
 button {
   display: flex;
   margin-left: 85%;

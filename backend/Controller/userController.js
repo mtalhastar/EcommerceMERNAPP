@@ -55,6 +55,7 @@ let login = (req, res) => {
         res.status(400).send({err:err})
     })
 }
+
 let updateProfile = (req, res) => {
     let { username, name, password, images } = req.body;
     let userId = req.decoded.id;
@@ -68,7 +69,6 @@ let updateProfile = (req, res) => {
             foundUser.name = name || foundUser.name;
             foundUser.password = password || foundUser.password;
             foundUser.images = images || foundUser.images;
-            foundUser.role=role||foundUser.role
             // Save updated user
             foundUser.save().then(updatedUser => {
                 res.status(200).send({"Message": "User profile updated", user: updatedUser});
