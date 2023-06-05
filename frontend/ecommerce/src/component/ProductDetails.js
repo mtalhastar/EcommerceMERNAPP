@@ -80,8 +80,6 @@ const EditTheProduct = async (e) => {
     console.error('Error:', error);
   }
 };
-
-
    return (
         <div className="buyer-details">
             <p><strong>Product: </strong>{product.name}</p>

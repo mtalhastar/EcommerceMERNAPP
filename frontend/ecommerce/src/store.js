@@ -6,7 +6,8 @@ const initialState = {
   loading: true,
   error: false,
   searchResults:[],
-  sellerProducts:[]
+  sellerProducts:[],
+  profile:{}
 };
 
 const reducer = (state = initialState, action) => {
@@ -77,11 +78,33 @@ const SellerProductReducer = (state = initialState, action) => {
   }
 };
 
+const FetchProfile = (state = initialState, action) => {
+  switch (action.type) {
+    case 'FETCH_PROFILE':
+      return {
+        ...state,
+        profile: action.payload,
+        loading: false,
+        error: false,
+      };
+    case 'FETCH_PROFILE_FAIL':
+      return {
+        ...state,
+        profile: {},
+        loading: false,
+        error: true,
+      }; 
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   // Add other reducers here if needed
   reducer,
   productReducer,
-  SellerProductReducer
+  SellerProductReducer,
+  FetchProfile
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly
