@@ -7,7 +7,11 @@ const initialState = {
   error: false,
   searchResults:[],
   sellerProducts:[],
-  profile:{}
+  profile:{
+   images:'',
+   name:'',
+   username:''
+  },
 };
 
 const reducer = (state = initialState, action) => {

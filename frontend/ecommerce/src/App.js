@@ -5,7 +5,7 @@ import ProductManage from './pages/ProductManage'
 import GamePage from './pages/GamePage'
 import SignUp from './pages/Signup'
 import NavBar from './component/Navbar'
-
+import ManageProfile from './pages/ManageProfile'
 
 function App() {
   return (
@@ -35,6 +35,12 @@ function App() {
            <Route
            path="/GhostPage"
            element= {<ProductManage/>}
+            />
+        </Routes>
+         <Routes>
+           <Route
+           path="/ProfilePage"
+           element= {<ManageProfile/>}
             />
         </Routes>
         <Routes>

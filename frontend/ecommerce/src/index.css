@@ -51,6 +51,12 @@ form button{
 form{
   width: 50%;
 }
+
+.nav-image{
+  height: 30px;
+  width: 30px;
+  margin: 0;
+}
 .card {
   background-color: #1c1b29;
   border-radius: 10px;
@@ -179,7 +185,13 @@ nav {
   text-decoration: none;
 }
 
-
+.Profile{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 40px;
+}
 
 button {
   display: flex;

@@ -2,6 +2,7 @@ import { ro } from 'date-fns/locale';
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 const NavBar =()=>{
 
    const selector =useSelector((state)=>state.reducer)
@@ -41,6 +42,8 @@ const NavBar =()=>{
             {role==='seller' &&
             <li ><Link to="/EvidencePage"><span>Seller</span></Link></li>
             }
+            <li ><Link to="/ProfilePage"><img  class="nav-image" src='../imageuser.png'/></Link></li>
+            
             <li onClick={resetToken}><Link to="/"><span >Signout</span></Link></li>
         </ul>
        

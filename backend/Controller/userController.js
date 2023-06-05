@@ -91,10 +91,10 @@ const findUsersByRole = async (req) => {
   }
 };
 
-const getAuser = async (req) => {
+const getAuser = async (req,res) => {
   try {
-    const { id } = req.decoded.id;
-    const user = await userModel.findById(id)
+
+    const user = await userModel.findById(req.decoded.id)
     res.status(200).json(user);
   } catch (error) {
     res.status(400).send({err:err})
