@@ -71,3 +71,23 @@ export const fetchUserProfile = () => {
     }
   };
 };
+
+export const fetchUsers = () => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+      const response = await fetch('/user/all', {
+        method: 'GET',
+        headers:{'token':token},
+      });
+      if (response.ok) {
+        const json = await response.json();
+        dispatch({ type: 'FETCH_USER_SUCCESS', payload: json });
+      } else {
+        dispatch({ type: 'FETCH_USER_FAILURE' });
+      }
+    } catch (error) {
+      dispatch({ type: 'FETCH_USER_FAILURE' });
+    }
+  };
+};

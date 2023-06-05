@@ -12,8 +12,12 @@ const initialState = {
    name:'',
    username:''
   },
+  
 };
 
+const userInitialState={
+  users:[]
+}
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT_COUNT':
@@ -103,12 +107,39 @@ const FetchProfile = (state = initialState, action) => {
   }
 };
 
+
+
+const userReducer = (state = userInitialState, action) => {
+  switch (action.type) {
+    case 'FETCH_USER_SUCCESS':
+      return {
+        ...state,
+        users: action.payload,
+        loading: false,
+        error: false,
+      };
+    case 'FETCH_USER_FAILURE':
+      return {
+        ...state,
+        users: [],
+        loading: false,
+        error: true,
+      };
+ 
+    default:
+      return state;
+  }
+};
+// 'FETCH_USER_SUCCESS'
+// 'FETCH_USER_FAILURE'
+    
 const rootReducer = combineReducers({
   // Add other reducers here if needed
   reducer,
   productReducer,
   SellerProductReducer,
-  FetchProfile
+  FetchProfile,
+  userReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly

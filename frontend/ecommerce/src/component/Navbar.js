@@ -42,8 +42,11 @@ const NavBar =()=>{
             {role==='seller' &&
             <li ><Link to="/EvidencePage"><span>Seller</span></Link></li>
             }
+               {role==='admin' &&
+            <li ><Link to="/ManageUser"><span>Manage Users</span></Link></li>
+            }
             <li ><Link to="/ProfilePage"><img  class="nav-image" src='../imageuser.png'/></Link></li>
-            
+         
             <li onClick={resetToken}><Link to="/"><span >Signout</span></Link></li>
         </ul>
        

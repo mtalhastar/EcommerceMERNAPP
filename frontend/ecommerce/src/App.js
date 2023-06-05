@@ -6,6 +6,8 @@ import GamePage from './pages/GamePage'
 import SignUp from './pages/Signup'
 import NavBar from './component/Navbar'
 import ManageProfile from './pages/ManageProfile'
+import ManageUsers from './pages/ManageUsers';
+
 
 function App() {
   return (
@@ -41,6 +43,12 @@ function App() {
            <Route
            path="/ProfilePage"
            element= {<ManageProfile/>}
+            />
+        </Routes>
+         <Routes>
+           <Route
+           path="/ManageUser"
+           element= {<ManageUsers/>}
             />
         </Routes>
         <Routes>

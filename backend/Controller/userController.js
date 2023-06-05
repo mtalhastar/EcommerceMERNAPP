@@ -100,11 +100,22 @@ const getAuser = async (req,res) => {
     res.status(400).send({err:err})
   }
 };
+
+const DeleteUser = async (req,res) => {
+  try {
+    const {id} =req.param
+    const user = await userModel.findByIdAndDelete(id)
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).send({err:err})
+  }
+};
 module.exports = {
     signup,
     login,
     updateProfile,
     getAllUsers,
     findUsersByRole,
-    getAuser
+    getAuser,
+    DeleteUser
 }

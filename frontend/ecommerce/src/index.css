@@ -415,8 +415,17 @@ header a {
 
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr ;
   gap: 100px;
+}
+
+.home1 {
+  display: grid;
+  grid-template-columns: repeat(1, 6fr);
+  gap: 100px;
+  margin-left: 20%;
+  margin-top: 20px;
+  
 }
 
 .buyer-details {

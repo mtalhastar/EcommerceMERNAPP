@@ -44,7 +44,7 @@ const ProductsPage = () => {
           <div className='searchDiv'>
                 <input type='text' placeholder='Search Your Product' className='productSearch'  onChange={searchProduct}></input>
                </div>
-          <div className="home">
+          <div className="home1">
             <div className='buyer'>
             
                 {searchValue!=='' ? ( search && search.map((product) => (
