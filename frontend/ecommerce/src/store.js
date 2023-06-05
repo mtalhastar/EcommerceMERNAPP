@@ -18,6 +18,15 @@ const initialState = {
 const userInitialState={
   users:[]
 }
+
+const orderInitialState={
+  orders:[]
+}
+
+const cartInitialState={
+  cartProducts:[],
+  cartProductsids:[]
+}
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT_COUNT':
@@ -130,6 +139,44 @@ const userReducer = (state = userInitialState, action) => {
       return state;
   }
 };
+
+
+
+const orderReducer = (state = orderInitialState, action) => {
+  switch (action.type) {
+    case 'FETCH_ORDER_SUCCESS':
+      return {
+        ...state,
+        order: action.payload,
+        loading: false,
+        error: false,
+      };
+    case 'FETCH_ORDER_FAILURE':
+      return {
+        ...state,
+        order: [],
+        loading: false,
+        error: true,
+      };
+ 
+    default:
+      return state;
+  }
+};
+
+
+const cartReducer = (state = cartInitialState, action) => {
+  switch (action.type) {
+    case 'ADD_PRODUCT':
+      return {
+        ...state,
+        cartProductsids: [...state.cartProductsids, action.productId],
+        cartProducts: [...state.cartProducts, action.payload]
+      };
+    default:
+      return state;
+  }
+};
 // 'FETCH_USER_SUCCESS'
 // 'FETCH_USER_FAILURE'
     
@@ -139,7 +186,8 @@ const rootReducer = combineReducers({
   productReducer,
   SellerProductReducer,
   FetchProfile,
-  userReducer
+  userReducer,
+  cartReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly

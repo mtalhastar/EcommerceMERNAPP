@@ -53,7 +53,6 @@ const NavBar =()=>{
          
             <li onClick={resetToken}><Link to="/"><span >Signout</span></Link></li>
         </ul>
-       
          </nav>
 </header>
     )

@@ -1,6 +1,6 @@
 import { useEffect, useState,useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts,searchProducts } from '../actions/action';
+import { fetchProducts,searchProducts,AddToCart } from '../actions/action';
 import ProductDetails from '../component/ProductDetails'
 import EvidenceForm from '../component/EvidenceForm'
 
@@ -9,8 +9,8 @@ const ProductsPage = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.productReducer.products);
     const search = useSelector((state) => state.productReducer.searchResults);
+    const cartProductsid = useSelector((state) => state.cartReducer.cartProductsids);
     const [searchValue,setsearchValue]=useState('')
-    const [cartProducts,setcartProducts]=useState([])
     localStorage.setItem('sellerPage',false)
   
     useEffect(() => {
@@ -35,10 +35,11 @@ const ProductsPage = () => {
     
 
     const addProductsToCart=(product)=>{
-        setcartProducts([...cartProducts,product])
+      if(!cartProductsid.includes(product._id)){
+       dispatch(AddToCart(product._id,product))
+      }
     }
-
-   
+    
     return (
         <>
           <div className='searchDiv'>

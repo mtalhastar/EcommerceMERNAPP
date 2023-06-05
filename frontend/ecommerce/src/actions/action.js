@@ -52,6 +52,14 @@ export const fetchSellerProducts = () => {
 };
 
 
+// actions.js
+export const AddToCart = (productId, payload) => {
+  return {
+    type: 'ADD_PRODUCT',
+    payload: payload,
+    productId: productId,
+  };
+};
 export const fetchUserProfile = () => {
   return async (dispatch) => {
     try {
@@ -85,6 +93,26 @@ export const fetchUsers = () => {
         dispatch({ type: 'FETCH_USER_SUCCESS', payload: json });
       } else {
         dispatch({ type: 'FETCH_USER_FAILURE' });
+      }
+    } catch (error) {
+      dispatch({ type: 'FETCH_USER_FAILURE' });
+    }
+  };
+};
+
+export const fetchOrders = () => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+      const response = await fetch('/order/getorder', {
+        method: 'GET',
+        headers:{'token':token},
+      });
+      if (response.ok) {
+        const json = await response.json();
+        dispatch({ type: 'FETCH_ORDER_SUCCESS', payload: json });
+      } else {
+        dispatch({ type: 'FETCH_ORDER_FAILURE' });
       }
     } catch (error) {
       dispatch({ type: 'FETCH_USER_FAILURE' });
