@@ -44,9 +44,9 @@ const NavBar =()=>{
             {role!=='default' &&
             <li><Link to="/ManageOrders"><span>ManageOrders</span></Link></li>
             }
-            {role==='seller' &&
+            {/* {role==='seller' &&
             <li ><Link to="/EvidencePage"><span>Seller</span></Link></li>
-            }
+            } */}
                {role==='admin' &&
             <li ><Link to="/ManageUser"><span>Manage Users</span></Link></li>
             }

@@ -47,6 +47,9 @@ const DeleteTheProduct = async (e) => {
          'Content-Type': 'application/json',
       },
     });
+    if(response.ok){
+       dispatch(incrementCount())
+    }
   } catch (error) {
     // Handle network or other errors
     console.error('Error:', error);
