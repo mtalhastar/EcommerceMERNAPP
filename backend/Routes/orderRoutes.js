@@ -7,7 +7,8 @@ const {
   createOrder,
   updateOrder,
   deleteOrder,
-  getOrderByRole
+  getOrderByRole,
+  getPendingOrders
 } = require('../Controller/orderController');
 
 // Get all job applications
@@ -21,4 +22,5 @@ router.put('/updateorder/:id', DecodeUser,checkAdmin, updateOrder);
 // Delete a job application by ID
 router.delete('/deleteOrder/:id',DecodeUser,checkAdmin,deleteOrder);
 router.get('/getOrderbyRole',DecodeUser,checkBuyer,getOrderByRole);
+router.get('/getPendingOrders',DecodeUser,checkBuyer,getPendingOrders);
 module.exports = router;
