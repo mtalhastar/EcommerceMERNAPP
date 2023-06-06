@@ -16,7 +16,9 @@ const viewAllAvailableOrders= async (req, res) => {
 
 const getDelivery= async (req, res) => {
     try{
-    const delivery = await Delivery.find();
+    const delivery = await Delivery.find()
+    .populate("user","username")
+    .populate("order");
     res.status(200).json({
         success: true,
         delivery
@@ -30,7 +32,9 @@ const getDelivery= async (req, res) => {
 const getADelivery= async (req, res) => {
     try{
      const user=req.decoded.id
-    const delivery = await Delivery.find({user:user});
+    const delivery = await Delivery.find({user:user})
+    .populate("user","username")
+    .populate("order");
     res.status(200).json({
         success: true,
         delivery

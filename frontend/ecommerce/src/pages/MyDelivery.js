@@ -4,18 +4,21 @@ import { fetchProducts,searchProducts,AddToCart,fetchOrders,fetchOwnOrders } fro
 import OrderDetails from '../component/OrderDetails'
 
 
-const MyOrders = () => {
+const ManageOrder = () => {
  
     const dispatch = useDispatch();
-
+    const orders = useSelector((state) => state.orderReducer.orders);
     const myOrders =useSelector((state) => state.myOrderReducer.myOrders);
+   
     const selector = useSelector((state) => state.reducer);
   
     useEffect(() => {
-    dispatch(fetchOwnOrders());
-    console.log(myOrders)
+    dispatch(fetchOrders());
+    
     const interval = setInterval(() => {
-      dispatch(fetchOwnOrders());
+        console.log(orders)
+      dispatch(fetchOrders);
+       
     }, 5000);
     return () => {
       clearInterval(interval);
@@ -28,7 +31,7 @@ const MyOrders = () => {
             <div className='buyer'>
             <h1>Orders</h1>
                 {
-                  myOrders && myOrders.map((order) => (
+                  orders && orders.map((order) => (
                     <OrderDetails key={order._id} order={order} />
                 ))  
                 }
@@ -39,4 +42,4 @@ const MyOrders = () => {
     )
 }
 
-export default MyOrders
+export default ManageOrder

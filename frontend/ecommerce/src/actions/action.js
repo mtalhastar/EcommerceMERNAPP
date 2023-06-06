@@ -138,4 +138,22 @@ export const fetchOwnOrders = () => {
   };
 };
 
-
+export const fetchMyDelivery = () => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+      const response = await fetch('/delivery/myDeliveries', {
+        method: 'GET',
+        headers:{'token':token},
+      });
+      if (response.ok) {
+        const json = await response.json();
+        dispatch({ type: 'FETCH_MYDELIVERY_SUCCESS', payload: json });
+      } else {
+        dispatch({ type: 'FETCH_MDELIVERY_FAILURE' });
+      }
+    } catch (error) {
+      dispatch({ type: 'FETCH_MYDELIVERY_FAILURE' });
+    }
+  };
+};

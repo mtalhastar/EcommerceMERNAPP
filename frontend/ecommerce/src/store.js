@@ -28,6 +28,11 @@ const cartInitialState={
   cartProducts:[],
   cartProductsids:[]
 }
+
+const deliveryInitialState={
+   mydeliveries:[]
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT_COUNT':
@@ -166,8 +171,9 @@ const orderReducer = (state = orderInitialState, action) => {
 };
 
 const myOrderReducer = (state = orderInitialState, action) => {
+
   switch (action.type) {
-    case 'FETCH_MYORDER_SUCCESSFETCH_MYORDER_SUCCESS':
+    case 'FETCH_MYORDER_SUCCESS':
       return {
         ...state,
         myOrders: action.payload,
@@ -199,6 +205,28 @@ const cartReducer = (state = cartInitialState, action) => {
       return state;
   }
 };
+
+const myDeliveryReducer =(state=deliveryInitialState,action)=>{
+   switch (action.type) {
+    case 'FETCH_MYDELIVERY_SUCCESS':
+      return {
+        ...state,
+        myOrders: action.payload,
+        loading: false,
+        error: false,
+      };
+    case 'FETCH_MYDELIVERY_FAIL':
+      return {
+        ...state,
+        myOrders: [],
+        loading: false,
+        error: true,
+      };
+ 
+    default:
+      return state;
+  }
+}
 // 'FETCH_USER_SUCCESS'
 // 'FETCH_USER_FAILURE'
     
@@ -211,7 +239,8 @@ const rootReducer = combineReducers({
   userReducer,
   cartReducer,
   orderReducer,
-  myOrderReducer
+  myOrderReducer,
+  myDeliveryReducer  //fetchMyDelivery
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly
