@@ -30,7 +30,6 @@ const orderSchema = new mongoose.Schema({
   deliveryDate: {
     type: String,
     default: '4 days',
-    required: true
   },                                   
   amount: {
     type: Number,
