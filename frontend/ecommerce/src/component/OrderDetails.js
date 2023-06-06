@@ -38,7 +38,12 @@ const updateInfo = async(e) => {
 return (
         <div className="buyer-details">
             <p><strong>User: </strong>{order.user}</p>
-            <p><strong>Products:</strong>{order.products}</p>
+            {order.products.map((product, index) => (
+           <div key={index}>
+            <p><strong>Product:</strong> {product.product}</p>
+            <p><strong>Quantity:</strong> {product.quantity}</p>
+           </div>
+           ))}
             <p><strong>Status:</strong>{order.status}</p>
             <p><strong>Address:</strong>{order.address}</p>
            <label className="label1">Change Status</label>

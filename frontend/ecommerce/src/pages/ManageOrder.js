@@ -8,7 +8,7 @@ const ManageOrder = () => {
  
     const dispatch = useDispatch();
     const orders = useSelector((state) => state.orderReducer.orders);
-  
+    const selector = useSelector((state) => state.reducer);
     useEffect(() => {
     dispatch(fetchOrders());
     const interval = setInterval(() => {
@@ -19,7 +19,7 @@ const ManageOrder = () => {
     return () => {
       clearInterval(interval);
     };
-    }, []);
+    }, [selector]);
 
     return (
         <>  
