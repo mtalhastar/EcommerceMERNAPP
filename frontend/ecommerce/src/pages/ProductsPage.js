@@ -2,7 +2,7 @@ import { useEffect, useState,useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts,searchProducts,AddToCart } from '../actions/action';
 import ProductDetails from '../component/ProductDetails'
-import EvidenceForm from '../component/EvidenceForm'
+
 
 const ProductsPage = () => {
  
@@ -36,7 +36,7 @@ const ProductsPage = () => {
 
     const addProductsToCart=(product)=>{
       if(!cartProductsid.includes(product._id)){
-       dispatch(AddToCart(product._id,product))
+       dispatch(AddToCart(product))
       }
     }
     

@@ -2,12 +2,11 @@ import{BrowserRouter,Routes,Route} from 'react-router-dom';
 import Login from './pages/Login'
 import ProductsPage from './pages/ProductsPage'
 import ProductManage from './pages/ProductManage'
-import GamePage from './pages/GamePage'
 import SignUp from './pages/Signup'
 import NavBar from './component/Navbar'
 import ManageProfile from './pages/ManageProfile'
 import ManageUsers from './pages/ManageUsers';
-
+import ManageOrder from './pages/ManageOrder';
 
 function App() {
   return (
@@ -51,12 +50,13 @@ function App() {
            element= {<ManageUsers/>}
             />
         </Routes>
-        <Routes>
+           <Routes>
            <Route
-           path="/GamePage"
-           element= {<GamePage/>}
+           path="/ManageOrders"
+           element= {<ManageOrder/>}
             />
         </Routes>
+       
       </div>
       </BrowserRouter>
     </div>

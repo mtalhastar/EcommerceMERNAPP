@@ -147,14 +147,14 @@ const orderReducer = (state = orderInitialState, action) => {
     case 'FETCH_ORDER_SUCCESS':
       return {
         ...state,
-        order: action.payload,
+        orders: action.payload,
         loading: false,
         error: false,
       };
     case 'FETCH_ORDER_FAILURE':
       return {
         ...state,
-        order: [],
+        orders: [],
         loading: false,
         error: true,
       };
@@ -187,7 +187,8 @@ const rootReducer = combineReducers({
   SellerProductReducer,
   FetchProfile,
   userReducer,
-  cartReducer
+  cartReducer,
+  orderReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly

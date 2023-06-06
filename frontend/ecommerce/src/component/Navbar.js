@@ -41,7 +41,9 @@ const NavBar =()=>{
             {role==='seller' &&
             <li><Link to="/GhostPage"><span>Products</span></Link></li>
             }
-           
+            {role!=='default' &&
+            <li><Link to="/ManageOrders"><span>ManageOrders</span></Link></li>
+            }
             {role==='seller' &&
             <li ><Link to="/EvidencePage"><span>Seller</span></Link></li>
             }
@@ -50,8 +52,9 @@ const NavBar =()=>{
             }
 
             <li ><Link to="/ProfilePage"><img  class="nav-image" src='../imageuser.png'/></Link></li>
-         
+             {role!=='default' &&
             <li onClick={resetToken}><Link to="/"><span >Signout</span></Link></li>
+             }
         </ul>
          </nav>
 </header>
