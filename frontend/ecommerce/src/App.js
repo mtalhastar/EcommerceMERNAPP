@@ -9,6 +9,9 @@ import ManageUsers from './pages/ManageUsers';
 import ManageOrder from './pages/ManageOrder';
 import MyOrders from './pages/myOrders';
 import MyDelivery from './pages/MyDelivery';
+import CartPage from './pages/CartPage'
+import Checkout from './pages/Checkout';
+
 function App() {
   return (
     <div>
@@ -68,6 +71,10 @@ function App() {
            path="/MyDelivery"
            element= {<MyDelivery/>}
             />
+        </Routes>
+          <Routes>
+          <Route exact path="/CartPage" element={<CartPage/>} />
+          <Route path="/Checkout" element={<Checkout />} />
         </Routes>
       </div>
       </BrowserRouter>

@@ -12,7 +12,11 @@ const initialState = {
    name:'',
    username:''
   },
-  
+  cart:{
+    cartItems:[],
+   totalPrice:0
+  }
+
 };
 
 const userInitialState={
@@ -78,6 +82,7 @@ const productReducer = (state = initialState, action) => {
       return state;
   }
 };
+
 
 const SellerProductReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -193,14 +198,86 @@ const myOrderReducer = (state = orderInitialState, action) => {
   }
 };
 
-const cartReducer = (state = cartInitialState, action) => {
+const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_PRODUCT':
+    case 'ADD_PRODUCT_TO_CART_SUCCESS': {
+      const { product, quantity } = action.payload;
+
+      // Calculate the price of the added product
+      const productPrice = product.price * quantity;
+      let name = product.name;
+      let price = product.price;
+      let id = product._id;
+      // Update the cart state
+      const updatedCartItems = [...state.cart.cartItems, { id, name, price, quantity }];
+      const updatedTotalPrice = state.cart.totalPrice + productPrice;
+
       return {
         ...state,
-        cartProductsids: [...state.cartProductsids, action.productId],
-        cartProducts: [...state.cartProducts, action.payload]
+        cart: {
+          ...state.cart,
+          cartItems: updatedCartItems,
+          totalPrice: updatedTotalPrice
+        },
+        loading: false,
+        error: false,
       };
+    }
+   
+    case 'REMOVE_PRODUCT_FROM_CART_SUCCESS': {
+      const { item } = action.payload;
+    
+      // Filter out the item to be removed from cartItems
+      const updatedCartItems = state.cart.cartItems.filter(
+        cartItem => cartItem.name !== item.name
+      );
+    
+      // Calculate the updated total price
+      const updatedTotalPrice = state.cart.totalPrice - (item.price * item.quantity);
+    
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: updatedCartItems,
+          totalPrice: updatedTotalPrice
+        },
+        loading: false,
+        error: false,
+      };
+    }
+
+    case "UPDATE_PRODUCT_QUANTITY_SUCCESS": {
+      const { item, quantity } = action.payload;
+    
+      // Map over the cartItems array and update the quantity of the matching item
+      const updatedCartItems = state.cart.cartItems.map(cartItem => {
+        if (cartItem.name === item.name) {
+          return {
+            ...cartItem,
+            quantity: quantity
+          };
+        }
+        return cartItem;
+      });
+    
+      // Calculate the updated total price
+      const updatedTotalPrice = state.cart.totalPrice + (item.price * (quantity - item.quantity));
+    
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          cartItems: updatedCartItems,
+          totalPrice: updatedTotalPrice
+        },
+        loading: false,
+        error: false,
+      };
+    }
+    
+
+
     default:
       return state;
   }

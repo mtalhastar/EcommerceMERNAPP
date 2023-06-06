@@ -41,7 +41,7 @@ const NavBar =()=>{
             {role==='seller' &&
             <li><Link to="/GhostPage"><span>ManageProducts</span></Link></li>
             }
-            {role!=='default' &&
+            {role!=='buyer' &&
             <li><Link to="/ManageOrders"><span>ManageOrders</span></Link></li>
             }
             {/* {role==='seller' &&
@@ -49,6 +49,9 @@ const NavBar =()=>{
             } */}
                {role==='admin' &&
             <li ><Link to="/ManageUser"><span>Manage Users</span></Link></li>
+            }
+            {role==='buyer' &&
+            <li><Link to="/CartPage"><span>Cart</span></Link></li>
             }
               {role==='buyer' &&
             <li ><Link to="/MyOrders"><span>MyOrders</span></Link></li>
@@ -60,7 +63,7 @@ const NavBar =()=>{
             {role!=='default' &&
             <li onClick={resetToken}><Link to="/"><span >Signout</span></Link></li>
             }
-             
+              
         </ul>
          </nav>
 </header>

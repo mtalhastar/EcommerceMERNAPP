@@ -65,7 +65,7 @@ const SignUp = () => {
    
     <form  onSubmit={handleSubmit}>
         <h1 className='nice'>Welcome To SignUp Page</h1>
-        <h3>username:</h3>
+        <h3>Email:</h3>
         <input type="text" value={username} onChange={handleUsernameChange} />
         <h3>name:</h3>
         <input type="text" value={name} onChange={handleNameChange} />

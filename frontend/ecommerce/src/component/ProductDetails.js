@@ -3,7 +3,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import 'material-symbols'
 import '../index.css'
 import { useSelector,useDispatch } from 'react-redux';
-import { incrementCount} from '../actions/action';
+import { incrementCount,addProductToCart} from '../actions/action';
 import { useState,useEffect,useContext } from 'react'
 const ProductDetails = ({  product , addProductsToCart }) => {
 
@@ -16,6 +16,19 @@ const ProductDetails = ({  product , addProductsToCart }) => {
      const [SingleClick,setSingleClick]=useState(false)
      const flag=  localStorage.getItem('sellerPage',false)
      
+
+
+    const [productQuantity, setQuantity] = useState(0)
+    const AddToCart = () => {
+      console.log(product,productQuantity)
+        dispatch(addProductToCart(product,productQuantity))
+    }
+    
+
+    const handleQuantityChange = (e) => {
+    setQuantity(e.target.value) 
+}
+
      console.log(flag)
       const dispatch = useDispatch()
       
@@ -32,9 +45,7 @@ const ProductDetails = ({  product , addProductsToCart }) => {
     }
   },[selector]);
 
-    const AddToCart = () => {
-     addProductsToCart(product._id)
-    }
+   
     
 const DeleteTheProduct = async (e) => {
     try {
@@ -95,7 +106,8 @@ const EditTheProduct = async (e) => {
             <option value="accepted">accepted</option>
             <option value="rejected">rejected</option>
         </select> */}
-
+               <label>quantity</label>
+              <input type="number" value={productQuantity} onChange={handleQuantityChange} placeholder='1'/>
        {role==='buyer' &&
         <button className='a' onClick={AddToCart} >AddToCart</button>
        }

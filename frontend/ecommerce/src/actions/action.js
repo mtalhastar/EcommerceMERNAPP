@@ -157,3 +157,71 @@ export const fetchMyDelivery = () => {
     }
   };
 };
+
+
+export const fetchBuyerCart = () => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+      const response = await fetch('/cart/', {
+        method: 'GET',
+        token:token
+      });
+
+      if (response.ok) {
+        const json = await response.json();
+        dispatch({ type: 'FETCH_BUYER_CART_SUCCESS', payload: json });
+      } else {
+        dispatch({ type: 'FETCH_BUYER_CART_FAILURE' });
+      }
+    } catch (error) {
+      dispatch({ type: 'FETCH_BUYER_CART_FAILURE' });
+    }
+  };
+}
+export const addProductToCart = (product, quantity) => {
+  return (dispatch) => {
+    try {
+      dispatch({
+        type: 'ADD_PRODUCT_TO_CART_SUCCESS',
+        payload: {
+          product,
+          quantity
+        }
+      });
+    } catch (error) {
+      dispatch({ type: 'ADD_PRODUCT_TO_CART_FAILURE' });
+    }
+  };
+};
+
+export const removeProductFromCart = (item) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: 'REMOVE_PRODUCT_FROM_CART_SUCCESS',
+        payload: {
+          item
+        }
+      });
+    } catch (error) {
+      dispatch({ type: 'REMOVE_PRODUCT_FROM_CART_FAILURE' });
+    }
+  }
+}
+
+export const updateProductQuantity = (item, quantity) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: 'UPDATE_PRODUCT_QUANTITY_SUCCESS',
+        payload: {
+          item,
+          quantity
+        }
+      });
+    } catch (error) {
+      dispatch({ type: 'UPDATE_PRODUCT_QUANTITY_FAILURE' });
+    }
+  }
+}
