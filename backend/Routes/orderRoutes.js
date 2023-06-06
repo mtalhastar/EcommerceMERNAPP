@@ -20,5 +20,5 @@ router.get('/getorder/:id', DecodeUser,checkSeller,getOrderById);
 router.put('/updateorder/:id', DecodeUser,checkAdmin, updateOrder);
 // Delete a job application by ID
 router.delete('/deleteOrder/:id',DecodeUser,checkAdmin,deleteOrder);
-router.get('/getOrderbyRole/:id',DecodeUser,checkSeller,getOrderByRole);
+router.get('/getOrderbyRole/:id',DecodeUser,checkBuyer,getOrderByRole);
 module.exports = router;

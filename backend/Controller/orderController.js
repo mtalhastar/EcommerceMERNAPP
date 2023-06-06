@@ -34,7 +34,11 @@ const getOrderByRole = async (req, res) => {
   const {id}=req.decoded;
   const user=id;
   try {
-    const order = await Order.findById({user:user}).populate('products.product');
+    const order = await Order.findById({user:user}).populate({
+      path: 'products.product',
+      model: 'Product',
+    })
+    .populate('user', 'username');
     if (!order) {
       return res.status(404).json({ error: 'Order not found' });
     }

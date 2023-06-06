@@ -20,7 +20,8 @@ const userInitialState={
 }
 
 const orderInitialState={
-  orders:[]
+  orders:[],
+  myOrders:[]
 }
 
 const cartInitialState={
@@ -164,6 +165,27 @@ const orderReducer = (state = orderInitialState, action) => {
   }
 };
 
+const myOrderReducer = (state = orderInitialState, action) => {
+  switch (action.type) {
+    case 'FETCH_MYORDER_SUCCESSFETCH_MYORDER_SUCCESS':
+      return {
+        ...state,
+        myOrders: action.payload,
+        loading: false,
+        error: false,
+      };
+    case 'FETCH_MYORDER_FAILURE':
+      return {
+        ...state,
+        myOrders: [],
+        loading: false,
+        error: true,
+      };
+ 
+    default:
+      return state;
+  }
+};
 
 const cartReducer = (state = cartInitialState, action) => {
   switch (action.type) {
@@ -188,7 +210,8 @@ const rootReducer = combineReducers({
   FetchProfile,
   userReducer,
   cartReducer,
-  orderReducer
+  orderReducer,
+  myOrderReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(thunk)); // Pass rootReducer directly

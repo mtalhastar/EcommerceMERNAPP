@@ -97,7 +97,7 @@ const handleImageChange = (event) => {
         </label>
         
         <label>
-          Email:
+          image:
           <input type="text" value={image} onChange={handleImageChange} />
         </label>
 

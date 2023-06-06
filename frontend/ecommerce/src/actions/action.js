@@ -117,3 +117,25 @@ export const fetchOrders = () => {
     }
   };
 };
+
+export const fetchOwnOrders = () => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+      const response = await fetch('/order/getorder', {
+        method: 'GET',
+        headers:{'token':token},
+      });
+      if (response.ok) {
+        const json = await response.json();
+        dispatch({ type: 'FETCH_MYORDER_SUCCESS', payload: json });
+      } else {
+        dispatch({ type: 'FETCH_MYORDER_FAILURE' });
+      }
+    } catch (error) {
+      dispatch({ type: 'FETCH_MYORDER_FAILURE' });
+    }
+  };
+};
+
+
