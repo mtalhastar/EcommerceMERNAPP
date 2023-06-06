@@ -8,6 +8,7 @@ import ManageProfile from './pages/ManageProfile'
 import ManageUsers from './pages/ManageUsers';
 import ManageOrder from './pages/ManageOrder';
 import MyOrders from './pages/myOrders';
+import MyDelivery from './pages/MyDelivery';
 function App() {
   return (
     <div>
@@ -60,6 +61,12 @@ function App() {
            <Route
            path="/MyOrders"
            element= {<MyOrders/>}
+            />
+        </Routes>
+        <Routes>
+           <Route
+           path="/MyDelivery"
+           element= {<MyDelivery/>}
             />
         </Routes>
       </div>

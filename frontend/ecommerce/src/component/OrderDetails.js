@@ -92,13 +92,6 @@ return (
               <div>
            <label className="label1">Change Status</label>
            <select className="dropdown1" onChange={handleOptionChange}>
-            <option value="">Select Option</option>
-             {role==='rider' &&
-            <option value="shipped">shipped</option>
-             }
-              {role==='rider' &&
-            <option value="delivered">delivered</option>
-              }
                {role==='admin' &&
             <option value="cancelled">cancelled</option>
                }
@@ -108,7 +101,7 @@ return (
         <button className='a' onClick={updateInfo} >Update</button>
 
         {role==='rider' &&
-        <button className='a' onClick={AcceptOrder}>Deliver</button>
+        <button className='a' onClick={AcceptOrder}>AcceptOrder</button>
         }
         </div>
     )

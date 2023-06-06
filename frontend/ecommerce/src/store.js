@@ -211,14 +211,14 @@ const myDeliveryReducer =(state=deliveryInitialState,action)=>{
     case 'FETCH_MYDELIVERY_SUCCESS':
       return {
         ...state,
-        myOrders: action.payload,
+        mydeliveries: action.payload,
         loading: false,
         error: false,
       };
     case 'FETCH_MYDELIVERY_FAIL':
       return {
         ...state,
-        myOrders: [],
+        mydeliveries: [],
         loading: false,
         error: true,
       };

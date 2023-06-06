@@ -53,10 +53,14 @@ const NavBar =()=>{
               {role==='buyer' &&
             <li ><Link to="/MyOrders"><span>MyOrders</span></Link></li>
             }
+            {role==='rider' &&
+            <li ><Link to="/MyDelivery"><span>ManageDelivery</span></Link></li>
+            }
             <li ><Link to="/ProfilePage"><img  class="nav-image" src='../imageuser.png'/></Link></li>
-             {role!=='default' &&
+            {role!=='default' &&
             <li onClick={resetToken}><Link to="/"><span >Signout</span></Link></li>
-             }
+            }
+             
         </ul>
          </nav>
 </header>

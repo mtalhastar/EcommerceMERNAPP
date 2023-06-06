@@ -14,20 +14,6 @@ const dispatch = useDispatch()
 const [status,orderStatus]=useState('')
 
 
-   useEffect(() => {
-       
-       const user = localStorage.getItem('user');
-      if (user) {
-      try {
-        const parsedUser = JSON.parse(user);
-        setRole(parsedUser.role);
-      } catch (error) {
-        console.error('Error parsing user data from localStorage:', error);
-      }
-    }
-  },[selector]);
-
-
 const updateInfo = async(e) => {
 
          const application ={
@@ -51,15 +37,13 @@ const updateInfo = async(e) => {
      orderStatus(event.target.value);
  };
 
-
-
 return (
         <div className="buyer-details">
             <h1>Delivery</h1>
             <p><strong>Rider: </strong>{delivery.user.username}</p>
-            <p><strong>Status: </strong>{delivery.status}</p>
-            <p><strong>Address: </strong>{delivery.address}</p>
-            <p><strong>Amount: </strong>{delivery.amount}</p>
+            <p><strong>Status: </strong>{delivery.order.status}</p>
+            <p><strong>Address: </strong>{delivery.order.address}</p>
+            <p><strong>Amount: </strong>{delivery.order.amount}</p>
                 <label className="label1">Change Status</label>
             <div>
            <select className="dropdown1" onChange={handleOptionChange}>

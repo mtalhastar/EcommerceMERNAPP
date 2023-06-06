@@ -1,23 +1,22 @@
 import { useEffect, useState,useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts,searchProducts,AddToCart,fetchOrders,fetchOwnOrders } from '../actions/action';
-import OrderDetails from '../component/OrderDetails'
+import {fetchOrders,fetchMyDelivery} from '../actions/action';
+import DeliveryDetails from '../component/DeliveryDetails'
 
 
-const ManageOrder = () => {
+const MyDelivery = () => {
  
     const dispatch = useDispatch();
-    const orders = useSelector((state) => state.orderReducer.orders);
-    const myOrders =useSelector((state) => state.myOrderReducer.myOrders);
-   
+    const deliveries =useSelector((state) => state.myDeliveryReducer.mydeliveries);
     const selector = useSelector((state) => state.reducer);
   
+
     useEffect(() => {
-    dispatch(fetchOrders());
+    dispatch(fetchMyDelivery());
     
     const interval = setInterval(() => {
-        console.log(orders)
-      dispatch(fetchOrders);
+       
+      dispatch(fetchMyDelivery());
        
     }, 5000);
     return () => {
@@ -31,8 +30,8 @@ const ManageOrder = () => {
             <div className='buyer'>
             <h1>Orders</h1>
                 {
-                  orders && orders.map((order) => (
-                    <OrderDetails key={order._id} order={order} />
+                  deliveries.delivery && deliveries.delivery.map((delivery) => (
+                    <DeliveryDetails key={delivery._id} delivery={delivery} />
                 ))  
                 }
             </div>
@@ -42,4 +41,4 @@ const ManageOrder = () => {
     )
 }
 
-export default ManageOrder
+export default MyDelivery
