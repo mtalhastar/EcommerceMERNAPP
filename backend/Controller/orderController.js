@@ -31,10 +31,9 @@ const getOrderById = async (req, res) => {
 
 // Get a specific order by ID
 const getOrderByRole = async (req, res) => {
-  const {id}=req.decoded;
-  const user=id;
+
   try {
-    const order = await Order.findById({user:user}).populate({
+    const order = await Order.find({user:req.decoded.id}).populate({
       path: 'products.product',
       model: 'Product',
     })
