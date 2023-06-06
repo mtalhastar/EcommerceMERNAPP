@@ -7,7 +7,7 @@ import NavBar from './component/Navbar'
 import ManageProfile from './pages/ManageProfile'
 import ManageUsers from './pages/ManageUsers';
 import ManageOrder from './pages/ManageOrder';
-
+import MyOrders from './pages/myOrders';
 function App() {
   return (
     <div>
@@ -56,7 +56,12 @@ function App() {
            element= {<ManageOrder/>}
             />
         </Routes>
-       
+       <Routes>
+           <Route
+           path="/MyOrders"
+           element= {<MyOrders/>}
+            />
+        </Routes>
       </div>
       </BrowserRouter>
     </div>

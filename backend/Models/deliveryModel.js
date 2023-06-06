@@ -11,7 +11,7 @@ const deliverySchema = new Schema(
         order:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Order',
-            required: true
+            required: true,
         },
     } , {timestamps: true});
 

@@ -122,7 +122,7 @@ export const fetchOwnOrders = () => {
   return async (dispatch) => {
     try {
       const token = JSON.parse(localStorage.getItem('token'));
-      const response = await fetch('/order/getorder', {
+      const response = await fetch('/order/getOrderbyRole', {
         method: 'GET',
         headers:{'token':token},
       });

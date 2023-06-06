@@ -7,9 +7,24 @@ import { incrementCount} from '../actions/action';
 import { useState,useEffect,useContext } from 'react'
 
 const OrderDetails = ({  order  }) => {
-
+const selector =useSelector((state)=>state.reducer)
+const [role, setRole] = useState('default');
 const dispatch = useDispatch()
 const [status,orderStatus]=useState('')
+
+
+   useEffect(() => {
+       
+       const user = localStorage.getItem('user');
+      if (user) {
+      try {
+        const parsedUser = JSON.parse(user);
+        setRole(parsedUser.role);
+      } catch (error) {
+        console.error('Error parsing user data from localStorage:', error);
+      }
+    }
+  },[selector]);
 
 
 const updateInfo = async(e) => {
@@ -35,6 +50,31 @@ const updateInfo = async(e) => {
      orderStatus(event.target.value);
  };
 
+
+ 
+const AcceptOrder = async (e) => {
+    e.preventDefault()
+    try {
+      const token = JSON.parse(localStorage.getItem('token'));
+        // Assuming you have the product ID from the event target
+      const response = await fetch(`/delivery/acceptOrder/`+order._id, {
+      method: 'POST',
+      headers: {
+         'token':token,
+         'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(order)
+    });
+    if(response.ok){
+ 
+    dispatch(incrementCount())
+    }
+  } catch (error) {
+    // Handle network or other errors
+    console.error('Error:', error);
+  }
+};
+
 return (
         <div className="buyer-details">
             <h1>Order</h1>
@@ -48,6 +88,7 @@ return (
             <p><strong>Status: </strong>{order.status}</p>
             <p><strong>Address: </strong>{order.address}</p>
             <p><strong>Amount: </strong>{order.amount}</p>
+            
            <label className="label1">Change Status</label>
            <select className="dropdown1" onChange={handleOptionChange}>
             <option value="">Select Option</option>
@@ -56,6 +97,10 @@ return (
             <option value="cancelled">cancelled</option>
            </select>
         <button className='a' onClick={updateInfo} >Update</button>
+
+        {role==='rider' &&
+        <button className='a' onClick={AcceptOrder}>Deliver</button>
+        }
         </div>
     )
 }

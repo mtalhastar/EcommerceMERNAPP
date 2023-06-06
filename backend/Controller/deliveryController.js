@@ -26,6 +26,20 @@ const getDelivery= async (req, res) => {
     }
 }
 
+
+const getADelivery= async (req, res) => {
+    try{
+     const user=req.decoded.id
+    const delivery = await Delivery.find({user:user});
+    res.status(200).json({
+        success: true,
+        delivery
+    });
+    }catch(err){
+        res.json({err})
+    }
+}
+
 const AcceptDeliveryOrders = async (req, res) => {
 try {
     const { id } = req.params;
@@ -72,5 +86,6 @@ module.exports={
     viewAllAvailableOrders,
     UpdateDeliveryStatus,
     AcceptDeliveryOrders,
-    getDelivery
+    getDelivery,
+    getADelivery
 }
