@@ -35,11 +35,11 @@ const NavBar =()=>{
         <ul className="nav-links">         
             <li><Link to="/"><span>Login</span></Link></li>
             <li><Link to="/signUp"><span>Signup</span></Link></li>
-            {role==='admin' &&
-            <li ><Link to="/EvidencePage"><span>ManageProducts</span></Link></li>
-            }
+            
+            <li ><Link to="/EvidencePage"><span>Products</span></Link></li>
+           
             {role==='seller' &&
-            <li><Link to="/GhostPage"><span>Products</span></Link></li>
+            <li><Link to="/GhostPage"><span>ManageProducts</span></Link></li>
             }
             {role!=='default' &&
             <li><Link to="/ManageOrders"><span>ManageOrders</span></Link></li>

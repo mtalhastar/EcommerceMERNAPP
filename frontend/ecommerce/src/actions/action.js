@@ -4,10 +4,8 @@ export const incrementCount = () => ({
 export const fetchProducts = () => {
   return async (dispatch) => {
     try {
-      const token = JSON.parse(localStorage.getItem('token'));
       const response = await fetch('/product/getAllProduct', {
         method: 'GET',
-        headers:{'token':token},
       });
 
       if (response.ok) {
