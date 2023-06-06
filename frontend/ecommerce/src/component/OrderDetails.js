@@ -88,18 +88,19 @@ return (
             <p><strong>Status: </strong>{order.status}</p>
             <p><strong>Address: </strong>{order.address}</p>
             <p><strong>Amount: </strong>{order.amount}</p>
-            {role!=='buyer' &&(
+            {role==='admin' &&(
               <div>
            <label className="label1">Change Status</label>
            <select className="dropdown1" onChange={handleOptionChange}>
-               {role==='admin' &&
+              
             <option value="cancelled">cancelled</option>
-               }
+               
            </select>
            </div>
            )}
+           {role==='admin' &&
         <button className='a' onClick={updateInfo} >Update</button>
-
+           }
         {role==='rider' &&
         <button className='a' onClick={AcceptOrder}>AcceptOrder</button>
         }

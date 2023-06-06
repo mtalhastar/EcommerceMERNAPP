@@ -13,6 +13,19 @@ const getAllOrders = async (req, res) => {
   }
 };
 
+const getPendingOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({status: 'pending'}).populate({
+      path: 'products.product',
+      model: 'Product',
+    })
+    .populate('user', 'username');
+    res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve orders' });
+  }
+};
+
 // Get a specific order by ID
 const getOrderById = async (req, res) => {
   const { id } = req.params;
@@ -97,5 +110,6 @@ module.exports = {
   createOrder,
   updateOrder,
   deleteOrder,
-  getOrderByRole
+  getOrderByRole,
+  getPendingOrders
 };
