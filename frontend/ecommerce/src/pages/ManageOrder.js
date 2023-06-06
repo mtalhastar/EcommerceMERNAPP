@@ -25,6 +25,7 @@ const ManageOrder = () => {
         <>  
           <div className="home1">
             <div className='buyer'>
+            <h1>Orders</h1>
                 {
                   orders && orders.map((order) => (
                     <OrderDetails key={order._id} order={order} />

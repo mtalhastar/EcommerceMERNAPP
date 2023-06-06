@@ -37,15 +37,17 @@ const updateInfo = async(e) => {
 
 return (
         <div className="buyer-details">
-            <p><strong>User: </strong>{order.user}</p>
-            {order.products.map((product, index) => (
+            <h1>Order</h1>
+            <p><strong>Buyer: </strong>{order.user.username}</p>
+            {order.products.map((productz, index) => (
            <div key={index}>
-            <p><strong>Product:</strong> {product.product}</p>
-            <p><strong>Quantity:</strong> {product.quantity}</p>
+            <p><strong>Product: </strong> {productz.product.name}</p>
+            <p><strong>Quantity: </strong> {productz.quantity}</p>
            </div>
            ))}
-            <p><strong>Status:</strong>{order.status}</p>
-            <p><strong>Address:</strong>{order.address}</p>
+            <p><strong>Status: </strong>{order.status}</p>
+            <p><strong>Address: </strong>{order.address}</p>
+            <p><strong>Amount: </strong>{order.amount}</p>
            <label className="label1">Change Status</label>
            <select className="dropdown1" onChange={handleOptionChange}>
             <option value="">Select Option</option>

@@ -2,7 +2,11 @@ const Order = require('../Models/orderSchema');
 // Get all orders
 const getAllOrders = async (req, res) => {
   try {
-    const orders = await Order.find().populate('products','product');
+    const orders = await Order.find().populate({
+      path: 'products.product',
+      model: 'Product',
+    })
+    .populate('user', 'username');
     res.status(200).json(orders);
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve orders' });
@@ -72,9 +76,9 @@ const updateOrder = async (req, res) => {
 
 // Delete an order
 const deleteOrder = async (req, res) => {
-  const { orderId } = req.params;
+  const { id } = req.params;
   try {
-    const order = await Order.findByIdAndDelete(orderId);
+    const order = await Order.findByIdAndDelete(id);
     if (!order) {
       return res.status(404).json({ error: 'Order not found' });
     }
