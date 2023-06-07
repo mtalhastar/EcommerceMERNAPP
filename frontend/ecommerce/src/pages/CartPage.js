@@ -43,6 +43,14 @@ function CartPage(){
     return (
         <div>
             <h1>CartPage</h1>
+        <div>
+            <h1>Total Price: {cart.totalPrice} </h1>
+            <button onClick={navigateToCheckout}>Checkout</button>
+        </div>
+
+        {/* <Link to="/Checkout" />     */}
+        
+
         <div className="home">   
             <div className="buyer">
                 {
@@ -52,12 +60,6 @@ function CartPage(){
                 }
             </div>
         </div>
-        <div>
-            <h1>Total Price: {cart.totalPrice} </h1>
-        </div>
-
-        {/* <Link to="/Checkout" />     */}
-        <button style={{position:"absolute", left:"0px", bottom:"10px"}} onClick={navigateToCheckout}>Checkout</button>
 
         </div>
     )
