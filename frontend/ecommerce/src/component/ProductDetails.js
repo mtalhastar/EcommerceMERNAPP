@@ -18,7 +18,7 @@ const ProductDetails = ({  product , addProductsToCart }) => {
      
 
 
-    const [productQuantity, setQuantity] = useState(0)
+    const [productQuantity, setQuantity] = useState(1)
     const AddToCart = () => {
       console.log(product,productQuantity)
         dispatch(addProductToCart(product,productQuantity))
