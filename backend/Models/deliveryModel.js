@@ -12,8 +12,8 @@ const deliverySchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Order',
             required: true,
+            unique:true
         },
     } , {timestamps: true});
-
 
 module.exports = mongoose.model('Delivery', deliverySchema);

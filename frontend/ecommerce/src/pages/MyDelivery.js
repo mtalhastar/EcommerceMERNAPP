@@ -15,9 +15,7 @@ const MyDelivery = () => {
     dispatch(fetchMyDelivery());
     
     const interval = setInterval(() => {
-       
       dispatch(fetchMyDelivery());
-       
     }, 5000);
     return () => {
       clearInterval(interval);

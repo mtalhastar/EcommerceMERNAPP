@@ -10,7 +10,7 @@ const UserCard = ({  user  }) => {
      
      const dispatch = useDispatch()
       
-const DeleteTheProduct = async (e) => {
+const DeleteTheUser = async (e) => {
     try {
       const token = JSON.parse(localStorage.getItem('token'));
         // Assuming you have the product ID from the event target
@@ -24,7 +24,8 @@ const DeleteTheProduct = async (e) => {
     if(response.ok){
       dispatch(incrementCount())
     }
-  } catch (error) {
+  
+  }catch (error) {
   
     // Handle network or other errors
     console.error('Error:', error);
@@ -37,7 +38,7 @@ const DeleteTheProduct = async (e) => {
             <p><strong>name: </strong>{user.name}</p>
             <p><strong>role: </strong>{user.role}</p>
             <img src={user.images} alt="img"></img>
-        <button className="a" onClick={DeleteTheProduct}>
+        <button className="a" onClick={DeleteTheUser}>
          Delete
         </button>
         </div>

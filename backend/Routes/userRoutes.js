@@ -9,6 +9,6 @@ userRoutes.post("/signup",signup)
 userRoutes.put("/updateProfile",DecodeUser,updateProfile)
 userRoutes.get("/findUsersByRole",DecodeUser,findUsersByRole)
 userRoutes.get("/getUser",DecodeUser,getAuser)
-userRoutes.get("/deleteUser",DecodeUser,checkAdmin,DeleteUser)
+userRoutes.delete("/deleteUser/:id",DecodeUser,checkAdmin,DeleteUser)
 
 module.exports = userRoutes;

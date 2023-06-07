@@ -15,12 +15,9 @@ const ManageUsers = () => {
     console.log(userss)
     }, [selector]);
 
-
-   
     return (
         <>
           <div className="home1">
-         
             <div className='buyer'>
               <h1>User Management</h1>
                 {
@@ -29,7 +26,6 @@ const ManageUsers = () => {
                 )) 
                 }
             </div>
-           
         </div>
        </>
     )

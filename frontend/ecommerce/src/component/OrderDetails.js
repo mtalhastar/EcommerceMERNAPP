@@ -11,6 +11,7 @@ const selector =useSelector((state)=>state.reducer)
 const [role, setRole] = useState('default');
 const dispatch = useDispatch()
 const [status,orderStatus]=useState('')
+const [err,setError]=useState('')
 
 
    useEffect(() => {
@@ -68,6 +69,8 @@ const AcceptOrder = async (e) => {
     if(response.ok){
  
     dispatch(incrementCount())
+    }else{
+    setError('Already Accepted By Some Rider')
     }
   } catch (error) {
     // Handle network or other errors
@@ -104,6 +107,8 @@ return (
         {role==='rider' &&
         <button className='a' onClick={AcceptOrder}>AcceptOrder</button>
         }
+
+        <p>{err}</p>
         </div>
     )
 }
