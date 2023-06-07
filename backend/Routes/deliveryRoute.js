@@ -6,7 +6,8 @@ const {
     UpdateDeliveryStatus,
     AcceptDeliveryOrders,
     getDelivery,
-    getADelivery
+    getADelivery,
+    deleteDelivery
 } = require('../Controller/deliveryController');
 
 // Get all job applications
@@ -18,4 +19,5 @@ router.post('/acceptOrder/:id', DecodeUser,checkRider,AcceptDeliveryOrders);
 // Update a job application by ID
 router.get('/getDeliveries', DecodeUser,checkAdmin,getDelivery);
 router.get('/myDeliveries', DecodeUser,checkRider,getADelivery);
+router.delete('/deleteDelivery/:id', DecodeUser,checkAdmin,deleteDelivery);
 module.exports = router;

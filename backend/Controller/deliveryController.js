@@ -44,6 +44,19 @@ const getADelivery= async (req, res) => {
     }
 }
 
+const deleteDelivery= async (req, res) => {
+    const {id}=req.params
+    try{
+    const delivery = await Delivery.findByIdAndDelete(id)
+    res.status(200).json({
+        success: true,
+        delivery
+    });
+    }catch(err){
+        res.json({err})
+    }
+}
+
 const AcceptDeliveryOrders = async (req, res) => {
 try {
     const { id } = req.params;
@@ -91,5 +104,6 @@ module.exports={
     UpdateDeliveryStatus,
     AcceptDeliveryOrders,
     getDelivery,
-    getADelivery
+    getADelivery,
+    deleteDelivery
 }
