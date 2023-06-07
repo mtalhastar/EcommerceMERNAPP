@@ -41,7 +41,7 @@ const NavBar =()=>{
             {role==='seller' &&
             <li><Link to="/GhostPage"><span>ManageProducts</span></Link></li>
             }
-            {role!=='buyer' &&
+            {role!=='buyer' || role!=='default' &&
             <li><Link to="/ManageOrders"><span>ManageOrders</span></Link></li>
             }
             {/* {role==='seller' &&
