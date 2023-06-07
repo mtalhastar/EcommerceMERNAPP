@@ -1,10 +1,14 @@
 import { useState } from "react"
 import {useSelector} from 'react-redux'
 import StripeCheckout from 'react-stripe-checkout';
+import { useNavigate } from "react-router-dom";
 function Checkout(){
-
+    const navigate = useNavigate()
+    let navigateToCart = () => {
+        navigate('/CartPage')
+    }
     const cart = useSelector((state)=>state.cartReducer.cart)
-
+    
     const createOrder = async (order) => {
         
         try {
@@ -91,6 +95,7 @@ function Checkout(){
                 <p style={{color:"white"}}><b>Total Amount: </b>{cart.totalPrice}</p>
             </div>
             <div>
+                 <button style={{position:"absolute", left:"-1050px", top:"250px"}} onClick={navigateToCart}>Back</button>
                 <StripeCheckout
                 stripeKey="pk_test_51N7zHbGB2OeWYDkD9yWvcbD1F7N5FXp2qMsC53cNTwx5y8SVNWWkHju32qvEHuj270k5yyTzKobYewyAIHfBSYO900J2UNkslG" 
                 token={makePayment}

@@ -6,9 +6,14 @@ import {useNavigate} from 'react-router-dom'
 
 function CartPage(){
 
-    const navigate = useNavigate()
+        const navigate = useNavigate()
     const navigateToCheckout = () => {
+        if(cart.totalPrice > 0){
         navigate('/Checkout')
+        }
+        else{
+            alert("Cart is empty")
+        }
     }
 
     const cart = useSelector((state)=>state.cartReducer.cart)

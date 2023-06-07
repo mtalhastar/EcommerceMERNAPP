@@ -7,10 +7,16 @@ function CartItem({item})
 
     const [quantity,setQuantity] = useState(item.quantity)
 
-    const handleQuantityChange = (e) => {
-        setQuantity(e.target.value)
-        
-    }
+const handleQuantityChange = (e) => {
+        if(e.target.value < 0)
+        {
+            alert("Quantity should be greater than 0")
+        }
+        else if( e.target.value <= item.productQuantity)
+          setQuantity(e.target.value) 
+        else
+        alert(`Quantity is not available.\nAvailable Quantity: ${item.productQuantity}`)
+      }
     const dispatch = useDispatch()
     const removeFromCart = () => {
         dispatch(removeProductFromCart(item))

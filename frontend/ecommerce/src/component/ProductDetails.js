@@ -25,8 +25,16 @@ const ProductDetails = ({  product , addProductsToCart }) => {
     }
     
 
-    const handleQuantityChange = (e) => {
+
+const handleQuantityChange = (e) => {
+  if(e.target.value < 0)
+  {
+    alert("Quantity should be greater than 0")
+  }
+  else if( e.target.value <= product.totalQuantity)
     setQuantity(e.target.value) 
+  else
+  alert(`Quantity is not available.\nAvailable Quantity: ${product.totalQuantity}`)
 }
 
      console.log(flag)

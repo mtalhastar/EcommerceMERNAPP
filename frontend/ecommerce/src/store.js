@@ -203,13 +203,37 @@ const cartReducer = (state = initialState, action) => {
     case 'ADD_PRODUCT_TO_CART_SUCCESS': {
       const { product, quantity } = action.payload;
 
+      const cart = state.cart;
+      let differentSellerFound = false;
+
+      if (cart && cart.cartItems) {
+        cart.cartItems.forEach(item => {
+          if (item.seller.name !== product.seller.name) {
+            differentSellerFound = true;
+            alert(`You can't add products from different sellers to the cart\n ${item.seller.name} can't be combined with ${product.seller.name}`);
+            return; // Exit the loop when a different seller is found
+          }
+        });
+      }
+
+      if (differentSellerFound) {
+        return state; // Return the original state if a different seller is found
+      }
+
       // Calculate the price of the added product
       const productPrice = product.price * quantity;
       let name = product.name;
       let price = product.price;
       let id = product._id;
+      let productQuantity = product.totalQuantity;
+      let image = product.image;
+      let seller = product.seller;
+
       // Update the cart state
-      const updatedCartItems = [...state.cart.cartItems, { id, name, price, quantity }];
+      const updatedCartItems = [
+        ...state.cart.cartItems,
+        { id, name, image, price, seller, productQuantity, quantity }
+      ];
       const updatedTotalPrice = state.cart.totalPrice + productPrice;
 
       return {
@@ -282,6 +306,8 @@ const cartReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+
 
 const myDeliveryReducer =(state=deliveryInitialState,action)=>{
    switch (action.type) {
