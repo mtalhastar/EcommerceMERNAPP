@@ -25,38 +25,43 @@ body {
   grid-gap: 40px;
 
 }
+
 h1 {
   color: white;
 }
-.pad{
+
+.pad {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-form button{
-      
-        margin-left: 0%;
-        margin-top: 0%;
-        display: block;
-        width: -moz-fit-content;
-        width: fit-content;
-        border: 1px solid #1c1b29;
-        background: #1c1b29;
-        padding: 10px 30px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-size: 16px;
-        color: #fff;
+
+form button {
+
+  margin-left: 0%;
+  margin-top: 0%;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #1c1b29;
+  background: #1c1b29;
+  padding: 10px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
 }
-form{
+
+form {
   width: 50%;
 }
 
-.nav-image{
+.nav-image {
   height: 30px;
   width: 30px;
   margin: 0;
 }
+
 .card {
   background-color: #1c1b29;
   border-radius: 10px;
@@ -122,11 +127,12 @@ form{
 }
 
 
-.pad a{
+.pad a {
   color: #d1feff;
 }
-.pad span{
-  color:rgb(219, 186, 255);
+
+.pad span {
+  color: rgb(219, 186, 255);
 }
 
 img {
@@ -147,10 +153,12 @@ img {
   border-radius: 20px 20px 0 0;
   opacity: 0.7;
 }
-.nice{
-margin: 20px;
-color: rgb(169, 169, 255);
+
+.nice {
+  margin: 20px;
+  color: rgb(169, 169, 255);
 }
+
 .details {
   padding: 20px 10px;
 }
@@ -174,12 +182,15 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-.Profile label{
-  color: white ;
+
+.Profile label {
+  color: white;
 }
+
 .Profile input {
-   border-radius: 8px;
+  border-radius: 8px;
 }
+
 .nav-header {
   flex: 1;
 }
@@ -190,18 +201,20 @@ nav {
   text-decoration: none;
 }
 
-.Profile{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin: 40px;
+.Profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
 }
-.Adjust{
+
+.Adjust {
   margin-left: 25%;
   width: 50%;
   margin-bottom: 20px;
 }
+
 button {
   display: flex;
   margin-left: 85%;
@@ -415,18 +428,18 @@ header a {
 
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr ;
+  grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
 
-.home1 {
+/* .home1 {
   display: grid;
   grid-template-columns: repeat(1, 6fr);
   gap: 100px;
   margin-left: 20%;
   margin-top: 20px;
   
-}
+} */
 
 .buyer-details {
   display: inline-block;
@@ -468,6 +481,10 @@ h3 {
   color: rgb(255, 255, 255);
 }
 
+.buyer {
+  width: 100%;
+}
+
 /* .buyer-details p {
   margin: 0;
   font-size: 0.9em;
@@ -499,11 +516,12 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
-.productSearch{
+
+.productSearch {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
-  margin-left:40%;
+  margin-left: 40%;
   width: 20%;
   border-radius: 20px;
   box-sizing: border-box;
@@ -542,10 +560,20 @@ input.error {
   margin-left: -90px;
   margin-right: 10px;
   padding-right: 30px;
+  width: 100%;
 }
 
 .evidence-img {
   display: flex;
+}
+
+.cart-price {
+  margin-left: 70%;
+}
+
+.checkout-button {
+  margin-left: 73%;
+  margin-top: 1%;
 }
 
 @media screen and (max-width: 768px) {
