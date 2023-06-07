@@ -1,5 +1,4 @@
 {
-  "proxy": "http://localhost:5000",
   "name": "job-portal",
   "version": "0.1.0",
   "private": true,
