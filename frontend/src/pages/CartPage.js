@@ -27,7 +27,7 @@ function CartPage(){
     
       const makePayment = async (token, addresses) => {
         
-        const response = await fetch('http://localhost:9090/checkout', {
+        const response = await fetch('/checkout', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

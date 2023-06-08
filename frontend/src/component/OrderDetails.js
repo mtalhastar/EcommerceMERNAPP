@@ -95,14 +95,15 @@ return (
               <div>
            <label className="label1">Change Status</label>
            <select className="dropdown1" onChange={handleOptionChange}>
-              
+            <option >-</option>
             <option value="cancelled">cancelled</option>
                
            </select>
            </div>
+         
            )}
            {role==='admin' &&
-        <button className='a' onClick={updateInfo} >Update</button>
+               <button className='a' onClick={updateInfo} >Update</button>
            }
         {role==='rider' &&
         <button className='a' onClick={AcceptOrder}>AcceptOrder</button>

@@ -114,8 +114,12 @@ const EditTheProduct = async (e) => {
             <option value="accepted">accepted</option>
             <option value="rejected">rejected</option>
         </select> */}
+        {role==='buyer' &&
                <label>quantity</label>
+        }
+                {role==='buyer' &&
               <input type="number" value={productQuantity} onChange={handleQuantityChange} placeholder='1'/>
+                }
        {role==='buyer' &&
         <button className='a' onClick={AddToCart} >AddToCart</button>
        }

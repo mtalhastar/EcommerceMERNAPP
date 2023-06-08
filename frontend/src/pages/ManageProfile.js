@@ -87,10 +87,10 @@ const handleImageChange = (event) => {
           <input type="text" value={name} onChange={handleNameChange} />
         </label>
       
-        <label>
+        {/* <label>
           Email:
           <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
+        </label> */}
         <label>
           Password:
           <input type="text" value={password} onChange={handlePasswordChange} />

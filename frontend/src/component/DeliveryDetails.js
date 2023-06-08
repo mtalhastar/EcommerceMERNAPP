@@ -41,6 +41,7 @@ return (
         <div className="buyer-details">
             <h1>Delivery</h1>
             <p><strong>Rider: </strong>{delivery.user.username}</p>
+             <p><strong>OrderID: </strong>{delivery.order._id}</p>
             <p><strong>Status: </strong>{delivery.order.status}</p>
             <p><strong>Address: </strong>{delivery.order.address}</p>
             <p><strong>Amount: </strong>{delivery.order.amount}</p>
